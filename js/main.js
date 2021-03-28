@@ -1,10 +1,12 @@
 //variables
 let values = []
-let number=0;
+let number='';
 let calc='';
+let lastcalc=false
 const showvalue = document.querySelector('#show-value')
 const btnmultiple=document.querySelector('#multiple')
 const btnclear = document.querySelector('#c')
+const btnback = document.querySelector('#back')
 const btnmines = document.querySelector('#mines')
 const btnsum = document.querySelector('#sum')
 const btndivision = document.querySelector('#division')
@@ -38,17 +40,23 @@ function eventlisteners() {
     btndivision.addEventListener('click', calculate)
     btnsum.addEventListener('click', calculate)
     btnaction.addEventListener('click', action)
+    btnback.addEventListener('click', back)
     window.addEventListener('load', clear)
 
 }
 //functions
 function addToValues(e) {
     //console.log(JSON.parse(e.target.value) )
-     number += JSON.parse(e.target.value) 
+  
+     number += e.target.value 
      showOnTimeValue(e.target.value)
 }
 
 function showOnTimeValue(value) {
+    if(lastcalc){
+        showvalue.value=''
+        lastcalc=false
+    }
     showvalue.value += value
     //console.log(value)
 }
@@ -56,10 +64,11 @@ function showOnTimeValue(value) {
  function calculate(e){
  //console.log(e.target.value)
  if(calc===''){
-    values.push(number)
+   
+    values.push(JSON.parse(number))
     calc=e.target.value
     showvalue.value += e.target.value
-    number=0
+    number=''
 
  }
  else{
@@ -67,7 +76,7 @@ function showOnTimeValue(value) {
  }
  }
 function action(){
-    values.push(number)
+    values.push(JSON.parse(number))
     let finishednum=0
     switch(calc){
         case "+":finishednum=sum(values[0],values[1]) 
@@ -84,8 +93,9 @@ function action(){
     }
     console.log(values)
     values=[]
-    number=0
+    number=''
     calc=''
+    lastcalc=true
     showvalue.value +=`=${finishednum}`
 }
 
@@ -117,5 +127,15 @@ function division(a, b) {
 }
 function multiple(a, b) {
     return a * b
+}
+function back(){
+
+number=''
+if(values[0]){
+    showvalue.value=values[0]
+    if(calc){
+        showvalue.value+=calc
+    }
+}
 }
 
