@@ -1,0 +1,12 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass -o css scss/style.scss"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
