@@ -105,6 +105,7 @@ function action(){
 function clear(e) {
     values = []
     calc=''
+    number=''
     showvalue.value = ''
 }
 
