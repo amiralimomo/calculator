@@ -10,31 +10,18 @@ const btnback = document.querySelector('#back')
 const btnmines = document.querySelector('#mines')
 const btnsum = document.querySelector('#sum')
 const btndivision = document.querySelector('#division')
-const btnone = document.querySelector('#one')
-const btntwo = document.querySelector('#two')
-const btnthree = document.querySelector('#three')
-const btnfour = document.querySelector('#four')
-const btnfive = document.querySelector('#five')
-const btnsix = document.querySelector('#six')
-const btnseven = document.querySelector('#seven')
-const btneight = document.querySelector('#eight')
-const btnzero = document.querySelector('#zero')
-const btnnine = document.querySelector('#nine')
+
+const numbtn=document.querySelectorAll('.numbers')
 const btnaction=document.querySelector('#action')
 //event listeners
 eventlisteners()
 function eventlisteners() {
     btnclear.addEventListener('click', clear)
-    btnone.addEventListener('click', addToValues)
-    btntwo.addEventListener('click', addToValues)
-    btnthree.addEventListener('click', addToValues)
-    btnfour.addEventListener('click', addToValues)
-    btnfive.addEventListener('click', addToValues)
-    btnsix.addEventListener('click', addToValues)
-    btnseven.addEventListener('click', addToValues)
-    btneight.addEventListener('click', addToValues)
-    btnnine.addEventListener('click', addToValues)
-    btnzero.addEventListener('click', addToValues)
+   
+    numbtn.forEach(function(item){
+        item.addEventListener('click',addToValues)
+    })
+
     btnmultiple.addEventListener('click', calculate)
     btnmines.addEventListener('click', calculate)
     btndivision.addEventListener('click', calculate)
@@ -91,7 +78,7 @@ function action(){
       
 
     }
-    console.log(values)
+   
     values=[]
     number=''
     calc=''
